@@ -1,0 +1,4 @@
+hazelcast:
+  cache:
+    cities:
+      management-enabled: true

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="author" content="colorlib.com" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <title>Title</title>
+  </head>
+  <body>
+    <div class="s130">
+      <form th:action="@{/}">
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <div class="svg-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                ></path>
+              </svg>
+            </div>
+            <input id="search" type="text" name="city" placeholder="What are you looking for?" />
+          </div>
+          <div class="input-field second-wrap">
+            <button class="btn-search" type="submit">SEARCH</button>
+          </div>
+        </div>
+        <div class="table-background">
+        <h1>Location:  <a th:text="${result}"></a></h1>
+        <h1>AQI: <a th:text="${aqi}"></a></h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Pollutant</th>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PM2.5</td>
+              <td th:text="${pm25}"></td>
+            </tr>
+            <tr>
+              <td>PM10</td>
+              <td th:text="${pm10}"></td>
+            </tr>
+            <tr>
+              <td>Ozone (O3)</td>
+              <td th:text="${ozone}"></td>
+            </tr>
+          </tbody>
+        </table>
+        <h1>Ozone</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">Forecast</th>
+            </tr>
+          </thead>
+          <tr th:each="forecast : ${o3forecast}">
+            <td th:text="${forecast.day}"></td>
+            <td th:text="${forecast.avg}"></td>
+          </tr>
+        </table>
+        <h1>PM10</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">Forecast</th>
+            </tr>
+          </thead>
+          <tr th:each="forecast : ${pm10forecast}">
+            <td th:text="${forecast.day}"></td>
+            <td th:text="${forecast.avg}"></td>
+          </tr>
+        </table>
+        <h1>PM25</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">Forecast</th>
+            </tr>
+          </thead>
+          <tr th:each="forecast : ${pm25forecast}">
+            <td th:text="${forecast.day}"></td>
+            <td th:text="${forecast.avg}"></td>
+          </tr>
+        </table>
+      </div>
+        </form>
+      </div>
+    </body>
+        </html>
